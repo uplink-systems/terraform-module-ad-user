@@ -29,8 +29,8 @@ user = {
             extensionAttribute1         = "AADSync"
         }
     }
+    # example: user with mixed config set DE02 and manual
     "00003" = {
-        # example: user with mixed config set DE02 and manual
         principal_name              = "knut.hansen@example.corp"
         sam_account_name            = "HansenK"
         surname                     = "Hansen"
@@ -48,8 +48,8 @@ user = {
             extensionAttribute2         = "RemoteUser"
         }
     }
+    # example: user with full manual config
     "00004" = {
-        # example: user with full manual config
         principal_name              = "max.mustermann@example.corp"
         sam_account_name            = "MustermannM"
         surname                     = "Mustermann"

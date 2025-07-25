@@ -6,10 +6,12 @@ The module **terraform-module-ad-user** is intended to create user accounts in a
   
 The module uses the following guidelines and rules by default to create its values:  
 * sAMAccountName
+  * the <code>sam_account_name</code> attribute must not have any language-specific 'special' characters; the module contains a function to translate 'special' characters to 'normal' characters; the map is a variable and can be customised
   * the <code>sam_account_name</code> attribute consists of a combination of <code>surname</code>- and <code>given_name</code>-attribute.
     * the <code>surname</code> attribute is cut-off after max. 10 characters
     * the <code>given_name</code> attribute is cut-off after max. 2 characters
 * User Principal Name
+  * the <code>principal_name</code> attribute must not have any language-specific 'special' characters; the module contains a function to translate 'special' characters to 'normal' characters; the map is a variable and can be customised
   * the <code>principal_name</code> attribute consist of a combination of <code>given_name</code>-, <code>surname</code>- and <code>upn_suffix</code>-attribute.
   
 > [!WARNING]
@@ -39,7 +41,8 @@ The module uses the following guidelines and rules by default to create its valu
 |------|-------------|------|---------|:--------:|
 | <a name="input_password"></a> [password](#input\_user) | 'var.password' is the optional variable for random_password settings (password policy) | <pre> tbd </pre> | {} | no |
 | <a name="input_user"></a> [user](#input\_user) | 'var.user' is the main variable for ad_user resource settings | <pre> tbd </pre> | none | yes |
-
+| <a name="input_character_map"></a> [character\_map](#input\_character_map) | 'var.character_map' is an optional variable to translate country specific characters to 'default' characters for sAMAccountName or UPN | <pre>type = map</pre> | <pre>{<br>  "Ä"  = "Ae"<br>  "ä"  = "ae"<br>  "Á"  = "A"<br>  "á"  = "a"<br>  "À"  = "A"<br>  "à"  = "a"<br>  "Â"  = "A"<br>  "â"  = "a"<br>  "Å"  = "A"<br>  "å"  = "a"<br>  "Ą"  = "A"<br>  "ą"  = "a"<br>  "Æ"  = "Ae"<br>  "æ"  = "ae"<br>  "Ć"  = "C"<br>  "ć"  = "c"<br>  "Ç"  = "C"<br>  "ç"  = "c"<br>  "Č"  = "C"<br>  "č"  = "c"<br>  "Ď"  = "D"<br>  "ď"  = "d"<br>  "Đ"  = "Dj"<br>  "đ"  = "dj"<br>  "È"  = "E"<br>  "É"  = "E"<br>  "é"  = "e"<br>  "è"  = "e"<br>  "Ê"  = "E"<br>  "ê"  = "e"<br>  "Ë"  = "E"<br>  "ë"  = "e"<br>  "Ę"  = "E"<br>  "ę"  = "e"<br>  "Í"  = "i"<br>  "í"  = "i"<br>  "Î"  = "I"<br>  "î"  = "i"<br>  "Ï"  = "i"<br>  "ï"  = "i"<br>  "Ĺ"  = "L"<br>  "ĺ"  = "l"<br>  "Ľ"  = "L"<br>  "ľ"  = "l"<br>  "Ł"  = "L"<br>  "ł"  = "l"<br>  "Ń"  = "N"<br>  "ń"  = "n"<br>  "Ň"  = "N"<br>  "ň"  = "n"<br>  "Ñ"  = "N"<br>  "ñ"  = "n"<br>  "Ö"  = "Oe"<br>  "ö"  = "oe"<br>  "Ó"  = "O"<br>  "ó"  = "o"<br>  "Ô"  = "O"<br>  "ô"  = "o"<br>  "Œ"  = "Oe"<br>  "œ"  = "oe"<br>  "Ŕ"  = "R"<br>  "ŕ"  = "r"<br>  "Ś"  = "S"<br>  "ś"  = "s"<br>  "Š"  = "S"<br>  "š"  = "s"<br>  "Ť"  = "T"<br>  "ť"  = "t"<br>  "ß"  = "ss"<br>  "Ü"  = "Ue"<br>  "ü"  = "ue"<br>  "Ú"  = "u"<br>  "ú"  = "u"<br>  "Ù"  = "U"<br>  "ù"  = "u"<br>  "Û"  = "U"<br>  "û"  = "u"<br>  "Ý"  = "Y"<br>  "ý"  = "y"<br>  "Ÿ"  = "Y"<br>  "ÿ"  = "y"<br>  "Ź"  = "Z"<br>  "ź"  = "z"<br>  "Ż"  = "Z"<br>  "ż"  = "z"<br>  "Ž"  = "Z"<br>  "ž"  = "z"<br>}</pre> | no |
+  
 ### Outputs
 
 | Name | Description |
