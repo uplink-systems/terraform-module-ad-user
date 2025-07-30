@@ -1,6 +1,6 @@
 ## Module 'terraform-module-ad-user'
 
-> [!INFO]
+> [!CAUTION]
 >The module is currently in BETA state and not finally tested!  
 >USE AT YOUR OWN RISK!!  
 
