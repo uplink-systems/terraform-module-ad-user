@@ -1,5 +1,9 @@
 ## Module 'terraform-module-ad-user'
 
+> [!INFO]
+>The module is currently in BETA state and not finally tested!  
+>USE AT YOUR OWN RISK!!  
+
 ### Description
 
 The module **terraform-module-ad-user** is intended to create user accounts in an onprem Active Directory following my business needs and standards. The module scopes all attributes available in the provider. It is designed to handle multiple users or even all users using for_each loop in the root module.  
@@ -39,17 +43,17 @@ The module uses the following guidelines and rules by default to create its valu
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_password"></a> [password](#input\_user) | 'var.password' is the optional variable for random_password settings (password policy) | <pre> tbd </pre> | {} | no |
-| <a name="input_user"></a> [user](#input\_user) | 'var.user' is the main variable for ad_user resource settings | <pre> tbd </pre> | none | yes |
-| <a name="input_character_map"></a> [character\_map](#input\_character_map) | 'var.character_map' is an optional variable to translate country specific characters to 'default' characters for sAMAccountName or UPN | <pre>type = map</pre> | <pre>{<br>  "Ä"  = "Ae"<br>  "ä"  = "ae"<br>  "Á"  = "A"<br>  "á"  = "a"<br>  "À"  = "A"<br>  "à"  = "a"<br>  "Â"  = "A"<br>  "â"  = "a"<br>  "Å"  = "A"<br>  "å"  = "a"<br>  "Ą"  = "A"<br>  "ą"  = "a"<br>  "Æ"  = "Ae"<br>  "æ"  = "ae"<br>  "Ć"  = "C"<br>  "ć"  = "c"<br>  "Ç"  = "C"<br>  "ç"  = "c"<br>  "Č"  = "C"<br>  "č"  = "c"<br>  "Ď"  = "D"<br>  "ď"  = "d"<br>  "Đ"  = "Dj"<br>  "đ"  = "dj"<br>  "È"  = "E"<br>  "É"  = "E"<br>  "é"  = "e"<br>  "è"  = "e"<br>  "Ê"  = "E"<br>  "ê"  = "e"<br>  "Ë"  = "E"<br>  "ë"  = "e"<br>  "Ę"  = "E"<br>  "ę"  = "e"<br>  "Í"  = "i"<br>  "í"  = "i"<br>  "Î"  = "I"<br>  "î"  = "i"<br>  "Ï"  = "i"<br>  "ï"  = "i"<br>  "Ĺ"  = "L"<br>  "ĺ"  = "l"<br>  "Ľ"  = "L"<br>  "ľ"  = "l"<br>  "Ł"  = "L"<br>  "ł"  = "l"<br>  "Ń"  = "N"<br>  "ń"  = "n"<br>  "Ň"  = "N"<br>  "ň"  = "n"<br>  "Ñ"  = "N"<br>  "ñ"  = "n"<br>  "Ö"  = "Oe"<br>  "ö"  = "oe"<br>  "Ó"  = "O"<br>  "ó"  = "o"<br>  "Ô"  = "O"<br>  "ô"  = "o"<br>  "Œ"  = "Oe"<br>  "œ"  = "oe"<br>  "Ŕ"  = "R"<br>  "ŕ"  = "r"<br>  "Ś"  = "S"<br>  "ś"  = "s"<br>  "Š"  = "S"<br>  "š"  = "s"<br>  "Ť"  = "T"<br>  "ť"  = "t"<br>  "ß"  = "ss"<br>  "Ü"  = "Ue"<br>  "ü"  = "ue"<br>  "Ú"  = "u"<br>  "ú"  = "u"<br>  "Ù"  = "U"<br>  "ù"  = "u"<br>  "Û"  = "U"<br>  "û"  = "u"<br>  "Ý"  = "Y"<br>  "ý"  = "y"<br>  "Ÿ"  = "Y"<br>  "ÿ"  = "y"<br>  "Ź"  = "Z"<br>  "ź"  = "z"<br>  "Ż"  = "Z"<br>  "ż"  = "z"<br>  "Ž"  = "Z"<br>  "ž"  = "z"<br>}</pre> | no |
-  
+| <a name="input_password"></a> [password](#input\_user) | 'var.password' is the optional variable for random_password settings ("password policy") | <pre>type = any</pre> | {} | no |
+| <a name="input_user"></a> [user](#input\_user) | 'var.user' is the main variable for ad_user resource settings | <pre>type          = object({<br>  given_name                  = string<br>  surname                     = string<br>  cannot_change_password      = optional(bool, null)<br>  city                        = optional(string, null)<br>  company                     = optional(string, null)<br>  container                   = optional(string, null)<br>  country                     = optional(string, null)<br>  custom_attributes           = optional(map(string), {})<br>  department                  = optional(string, null)<br>  description                 = optional(string, null)<br>  display_name                = optional(string, null)<br>  division                    = optional(string, null)<br>  email_address               = optional(string, null)<br>  employee_id                 = optional(string, null)<br>  employee_number             = optional(string, null)<br>  enabled                     = optional(bool, null)<br>  fax                         = optional(string, null)<br>  home_directory              = optional(string, null)<br>  home_drive                  = optional(string, null)<br>  home_page                   = optional(string, null)<br>  home_phone                  = optional(string, null)<br>  id                          = optional(string, null)<br>  mobile_phone                = optional(string, null)<br>  office                      = optional(string, null)<br>  office_phone                = optional(string, null)<br>  organization                = optional(string, null)<br>  other_name                  = optional(string, null)<br>  password_never_expires      = optional(bool, null)<br>  po_box                      = optional(string, null)<br>  postal_code                 = optional(string, null)<br>  principal_name              = optional(string, null)<br>  principal_name_suffix       = optional(string, null)<br>  sam_account_name            = optional(string, null)<br>  smart_card_logon_required   = optional(bool, null)<br>  state                       = optional(string, null)<br>  street_address              = optional(string, null)<br>  title                       = optional(string, null)<br>  trusted_for_delegation      = optional(bool, null)<br>  export                      = optional(object({<br>    enabled                     = optional(bool, true)<br>    file                        = optional(string, null)<br>    path                        = optional(string, null)<br>  }), { enabled = true })<br>})</pre> | none | yes |
+| <a name="input_character_map"></a> [character\_map](#input\_character_map) | 'var.character_map' is an optional variable to translate country specific characters in surnames and given names to 'default' characters for sAMAccountName or UPN | <pre>type = map</pre> | <pre>{<br>  "Ä"  = "Ae"<br>  "ä"  = "ae"<br>  "Á"  = "A"<br>  "á"  = "a"<br>  "À"  = "A"<br>  "à"  = "a"<br>  "Â"  = "A"<br>  "â"  = "a"<br>  "Å"  = "A"<br>  "å"  = "a"<br>  "Ą"  = "A"<br>  "ą"  = "a"<br>  "Æ"  = "Ae"<br>  "æ"  = "ae"<br>  "Ć"  = "C"<br>  "ć"  = "c"<br>  "Ç"  = "C"<br>  "ç"  = "c"<br>  "Č"  = "C"<br>  "č"  = "c"<br>  "Ď"  = "D"<br>  "ď"  = "d"<br>  "Đ"  = "Dj"<br>  "đ"  = "dj"<br>  "È"  = "E"<br>  "É"  = "E"<br>  "é"  = "e"<br>  "è"  = "e"<br>  "Ê"  = "E"<br>  "ê"  = "e"<br>  "Ë"  = "E"<br>  "ë"  = "e"<br>  "Ę"  = "E"<br>  "ę"  = "e"<br>  "Í"  = "i"<br>  "í"  = "i"<br>  "Î"  = "I"<br>  "î"  = "i"<br>  "Ï"  = "i"<br>  "ï"  = "i"<br>  "Ĺ"  = "L"<br>  "ĺ"  = "l"<br>  "Ľ"  = "L"<br>  "ľ"  = "l"<br>  "Ł"  = "L"<br>  "ł"  = "l"<br>  "Ń"  = "N"<br>  "ń"  = "n"<br>  "Ň"  = "N"<br>  "ň"  = "n"<br>  "Ñ"  = "N"<br>  "ñ"  = "n"<br>  "Ö"  = "Oe"<br>  "ö"  = "oe"<br>  "Ó"  = "O"<br>  "ó"  = "o"<br>  "Ô"  = "O"<br>  "ô"  = "o"<br>  "Œ"  = "Oe"<br>  "œ"  = "oe"<br>  "Ŕ"  = "R"<br>  "ŕ"  = "r"<br>  "Ś"  = "S"<br>  "ś"  = "s"<br>  "Š"  = "S"<br>  "š"  = "s"<br>  "Ť"  = "T"<br>  "ť"  = "t"<br>  "ß"  = "ss"<br>  "Ü"  = "Ue"<br>  "ü"  = "ue"<br>  "Ú"  = "u"<br>  "ú"  = "u"<br>  "Ù"  = "U"<br>  "ù"  = "u"<br>  "Û"  = "U"<br>  "û"  = "u"<br>  "Ý"  = "Y"<br>  "ý"  = "y"<br>  "Ÿ"  = "Y"<br>  "ÿ"  = "y"<br>  "Ź"  = "Z"<br>  "ź"  = "z"<br>  "Ż"  = "Z"<br>  "ż"  = "z"<br>  "Ž"  = "Z"<br>  "ž"  = "z"<br>}</pre> | no |
+
 ### Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_ad_user"></a> [ad\_user](#output\_ad\_user) | list of all exported attributes values from all users |
-| <a name="output_ad_user_credential"></a> [ad\_user\_credential](#output\_ad\_user\_credential) | list of exported ad_user.user.principal_name, random_password.password.result and local_sensitive_file.credential[0].filename attribute values as map from all users |
-| <a name="output_ad_user_credential_csv"></a> [ad\_user\_credential\_csv](#output\_ad\_user\_credential\_csv) | list of exported ad_user.principal_name and random_password.password.result attribute values as comma-separated values from all users |
+| <a name="output_ad_user_credential"></a> [ad\_user\_credential](#output\_ad\_user\_credential) | list of exported ad_user.user.principal_name, ad_user.user.sam_account_name, random_password.password.result and local_sensitive_file.credential[0].filename attribute values as map from all users |
+| <a name="output_ad_user_credential_csv"></a> [ad\_user\_credential\_csv](#output\_ad\_user\_credential\_csv) | list of exported ad_user.principal_name, ad_user.user.sam_account_name and random_password.password.result attribute values as comma-separated values from all users |
 
 >[!IMPORTANT]
 >Apart from that the module exports each user's username and passwort physically as text file by default using 'local_sensitive_file' resources (export can be prevented by setting *var.user.export.enabled* value to 'false'). Path and filename have default values but can be modified by configuring *var.user.export.path* and *var.user.export.file* (see section \"Variables / Locals\").
@@ -64,6 +68,22 @@ Output - UPNs of all users using 'ad_user' output:
 ```
 output "ad_user_user_principal_name" {
   value   = values(module.ad_user).*.ad_user.principal_name
+}
+```
+
+Output - SIDss of all users using 'ad_user' output:  
+
+```
+output "ad_user_user_sid" {
+  value   = values(module.ad_user).*.ad_user.sid
+}
+```
+
+Output - Distinguished Name of a specified users using 'ad_user' output:  
+
+```
+output "ad_user_user_distinguished_name" {
+  value   = values(module.ad_user).["UserXYZ"].ad_user.dn
 }
 ```
 
