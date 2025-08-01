@@ -3,7 +3,6 @@
 ####################################################################################################
 
 resource "random_password" "password" {
-  #length                    = try(var.password.length, 12)
   length                    = local.password.length >= 12 ? local.password.length : 12
   lower                     = local.password.lower
   min_lower                 = local.password.min_lower
